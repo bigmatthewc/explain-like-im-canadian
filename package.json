@@ -1,31 +1,18 @@
 {
   "name": "explain-like-im-canadian",
   "version": "0.1.0",
-  "type": "module"
   "private": true,
   "scripts": {
-    "start": "next start",
     "dev": "next dev",
-    "json-server": "json-server --watch data/db.json --port 5000",
     "build": "next build",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.16",
-    "axios": "^1.8.4",
-    "classnames": "^2.5.1",
-    "date-fns": "^4.1.0",
-    "next": "15.3.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0"
+    "axios": "^1.6.2",
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18"
   },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.0",
-    "json-server": "^1.0.0-beta.3",
-    "tailwindcss": "^4"
-  }
+  "type": "module"
 }

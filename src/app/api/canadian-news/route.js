@@ -1,13 +1,14 @@
 import { getCanadianNews } from '@/lib/newsapi';
 
 export async function GET() {
-  try {
-    const articles = await getCanadianNews();
-    return Response.json(articles);
-  } catch (error) {
+  const articles = await getCanadianNews();
+  
+  if (!articles.length) {
     return Response.json(
-      { error: 'Failed to fetch news' },
-      { status: 500 }
+      { error: "No articles found", sources: process.env.NEWS_API_SOURCES },
+      { status: 404 }
     );
   }
+  
+  return Response.json(articles);
 }
