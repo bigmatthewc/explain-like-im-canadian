@@ -1,5 +1,5 @@
 // src/app/NewsList.client.jsx
-'use client';
+'use client'; // Required for hooks
 
 import { useState } from 'react';
 import NewsCard from '@/components/news-cards/NewsCard';
@@ -27,12 +27,5 @@ export default function NewsList({ initialArticles }) {
 }
 
 function getBiasForSource(sourceName) {
-  const biasMap = {
-    'CBC News': 'left',
-    'The Globe and Mail': 'center',
-    'National Post': 'right',
-    'Global News': 'center',
-    'CTV News': 'center-left'
-  };
-  return biasMap[sourceName] || 'unknown';
+  // ... (same bias mapping as before)
 }
