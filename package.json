@@ -1,0 +1,26 @@
+{
+  "name": "explain-like-im-canadian",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "next start",
+    "dev": "next dev",
+    "json-server": "json-server --watch data/db.json --port 5000",
+    "build": "next build",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1",
+    "next": "15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.0",
+    "json-server": "^1.0.0-beta.3",
+    "tailwindcss": "^4"
+  }
+}
