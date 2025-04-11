@@ -1,38 +1,27 @@
-// src/app/NewsList.client.jsx
-'use client';
+import NewsList from './NewsList';
 
-import { useState } from 'react';
-import NewsCard from '@/components/news-cards/NewsCard';
-import BiasFilter from '@/components/BiasFilter';
-
-export default function NewsList({ initialArticles }) {
-  const [activeBias, setActiveBias] = useState('all');
-
-  const filteredArticles = activeBias === 'all' 
-    ? initialArticles 
-    : initialArticles.filter(article => 
-        getBiasForSource(article.source?.name) === activeBias
-      );
-
-  return (
-    <>
-      <BiasFilter activeBias={activeBias} setActiveBias={setActiveBias} />
-      <div className="grid gap-6 md:grid-cols-3">
-        {filteredArticles.map((article) => (
-          <NewsCard key={article.url} article={article} />
-        ))}
-      </div>
-    </>
-  );
+async function getNews() {
+  const res = await fetch('http://localhost:3000/api/canadian-news');
+  if (!res.ok) throw new Error('Failed to fetch news');
+  return res.json();
 }
 
-function getBiasForSource(sourceName) {
-  const biasMap = {
-    'CBC News': 'left',
-    'The Globe and Mail': 'center',
-    'National Post': 'right',
-    'Global News': 'center',
-    'CTV News': 'center-left'
-  };
-  return biasMap[sourceName] || 'unknown';
+export default async function Home() {
+  try {
+    const articles = await getNews();
+    return (
+      <main className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold mb-2">Canadian News Aggregator</h1>
+        <p className="text-gray-600 mb-6">Multiple perspectives on today's stories</p>
+        <NewsList initialArticles={articles} />
+      </main>
+    );
+  } catch (error) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold mb-2">Error Loading News</h1>
+        <p className="text-red-500">{error.message}</p>
+      </div>
+    );
+  }
 }
