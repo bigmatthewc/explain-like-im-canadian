@@ -1,6 +1,7 @@
 {
   "name": "explain-like-im-canadian",
   "version": "0.1.0",
+  "type": "module"
   "private": true,
   "scripts": {
     "start": "next start",
