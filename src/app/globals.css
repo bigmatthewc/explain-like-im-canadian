@@ -1,26 +1,70 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Geist font variables (if using) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-geist-sans: 'Geist Variable', sans-serif;
+  --font-geist-mono: 'Geist Mono Variable', monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base styles */
+body {
+  @apply bg-white text-gray-900 font-sans antialiased;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Custom component classes */
+.bias-label {
+  @apply inline-block px-2 py-1 text-xs font-medium rounded-full;
+}
+
+.bias-label.left {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.bias-label.center {
+  @apply bg-gray-100 text-gray-800;
+}
+
+.bias-label.right {
+  @apply bg-red-100 text-red-800;
+}
+
+/* Article card styles */
+.article-card {
+  @apply border rounded-lg overflow-hidden hover:shadow-md transition-shadow;
+}
+
+/* Custom scrollbar (optional) */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full hover:bg-gray-500;
+}
+
+/* Responsive typography */
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Animation for loading states */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
